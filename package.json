@@ -1,0 +1,17 @@
+{
+  "name": "hudulduglab7",
+  "version": "1.0.0",
+  "description": "Лаб 7: Sass/SCSS refactoring",
+  "main": "script.js",
+  "scripts": {
+    "build": "sass scss/main.scss css/style.css --style=compressed",
+    "watch": "sass --watch scss/main.scss css/style.css"
+  },
+  "keywords": [],
+  "author": "Д.Бадамдорж",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.107.1"
+  }
+}

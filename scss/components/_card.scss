@@ -1,0 +1,69 @@
+@use '../abstracts/mixins' as *;
+
+.hero-card {
+  background-color: var(--hero);
+  border: 4px solid var(--hero-border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: 0 8px 0 var(--hero-shadow);
+  margin-bottom: 20px;
+  h2 { color: var(--hero-text); margin-bottom: 10px; font-size: 1.3rem; }
+  p  { color: var(--hero-text); }
+}
+
+.cards-grid { display: flex; flex-direction: column; gap: 20px; }
+
+.toon-card, .side-card {
+  border-radius: var(--radius-card);
+  padding: 20px;
+  border: 4px solid #000;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  &:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 15px 0 #000; }
+}
+
+.toon-card {
+  box-shadow: 0 8px 0 #000;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+
+.toon-card--pink   { background-color: var(--pink);   border-color: #db2777; box-shadow: 0 8px 0 #be185d; }
+.toon-card--yellow { background-color: var(--yellow); border-color: #ca8a04; box-shadow: 0 8px 0 #a16207; }
+.toon-card--green  { background-color: var(--green);  border-color: #16a34a; box-shadow: 0 8px 0 #15803d; }
+.card-blue   { background-color: var(--blue);   border-color: #2563eb; box-shadow: 0 8px 0 #1d4ed8; }
+.card-purple { background-color: var(--purple); border-color: #9333ea; box-shadow: 0 8px 0 #7e22ce; }
+
+.toon-card__icon { font-size: 3rem; margin-bottom: 10px; }
+
+.toon-card__btn {
+  margin-top: 15px; padding: 10px 20px;
+  font-family: inherit; font-weight: 700;
+  border-radius: var(--radius-btn);
+  border: 3px solid #000;
+  background-color: #fff; color: #1e293b;
+  cursor: pointer; box-shadow: 0 4px 0 #000;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  &:hover { transform: scale(1.1) rotate(-3deg); background-color: #fef08a; }
+  &:active { transform: translateY(4px); box-shadow: none; }
+  &:focus-visible { outline: 4px solid #f43f5e; outline-offset: 3px; }
+}
+
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.toon-list { list-style: none; margin-top: 10px; li { padding: 8px 0; font-weight: 700; } }
+
+.toon-table {
+  width: 100%; margin-top: 10px; border-collapse: collapse;
+  th, td { padding: 8px; text-align: left; }
+}
+
+.score__pill {
+  display: inline-block;
+  background-color: #f43f5e; color: #fff;
+  padding: 4px 10px; border-radius: 20px;
+  border: 2px solid #000; font-weight: 900;
+  transition: transform 0.2s ease;
+  &:hover { transform: scale(1.25); }
+}
+
+@include respond(tablet)  { .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); } }
+@include respond(desktop) { .cards-grid { grid-template-columns: repeat(3, 1fr); } }

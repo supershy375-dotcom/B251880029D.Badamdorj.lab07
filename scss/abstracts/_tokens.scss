@@ -1,0 +1,30 @@
+$breakpoints: (tablet: 601px, desktop: 901px);
+$radius: (card: 20px, btn: 12px, small: 10px);
+
+$light: (
+  'bg': #fef08a, 'dot': #f472b6, 'text': #1e293b,
+  'header': #38bdf8, 'header-border': #0284c7,
+  'hero': #a7f3d0, 'hero-border': #059669, 'hero-shadow': #047857, 'hero-text': #065f46,
+  'pink': #fbcfe8, 'yellow': #fef08a, 'green': #bbf7d0, 'blue': #bfdbfe, 'purple': #e9d5ff,
+  'footer': #f472b6, 'surface': #ffffff
+);
+
+$dark: (
+  'bg': #1e1b4b, 'dot': #6d28d9, 'text': #f1f5f9,
+  'header': #1e3a8a, 'header-border': #172554,
+  'hero': #064e3b, 'hero-border': #34d399, 'hero-shadow': #022c22, 'hero-text': #a7f3d0,
+  'pink': #831843, 'yellow': #713f12, 'green': #14532d, 'blue': #1e3a8a, 'purple': #4c1d95,
+  'footer': #831843, 'surface': #312e81
+);
+
+:root {
+  @each $name, $value in $light { --#{$name}: #{$value}; }
+  @each $name, $value in $radius { --radius-#{$name}: #{$value}; }
+  --speed: 0.3s;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  @each $name, $value in $dark { --#{$name}: #{$value}; }
+  color-scheme: dark;
+}

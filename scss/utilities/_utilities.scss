@@ -1,0 +1,13 @@
+@use '../abstracts/functions' as *;
+
+$utility-colors: (
+  'pink': #fbcfe8,
+  'yellow': #fef08a,
+  'green': #bbf7d0,
+  'blue': #bfdbfe,
+  'purple': #e9d5ff
+);
+
+@each $name, $c in $utility-colors {
+  .bg-#{$name} { background-color: $c; color: contrast($c); }
+}

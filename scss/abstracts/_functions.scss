@@ -1,0 +1,17 @@
+@use 'sass:math';
+@use 'sass:color';
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+@function contrast($c) {
+  $r: color.channel($c, "red", $space: rgb);
+  $g: color.channel($c, "green", $space: rgb);
+  $b: color.channel($c, "blue", $space: rgb);
+  $luma: math.div($r * 299 + $g * 587 + $b * 114, 1000);
+  @if $luma > 140 {
+    @return #1e293b;
+  }
+  @return #ffffff;
+}

@@ -1,0 +1,80 @@
+@use '../abstracts/mixins' as *;
+
+.toon-header {
+  background-color: var(--header);
+  border-bottom: 6px solid var(--header-border);
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  display: flex; align-items: center; gap: 8px;
+  h1 { font-size: 1.4rem; color: #fff; text-shadow: 3px 3px 0 var(--header-border); }
+  .star { display: inline-block; transition: transform 0.5s ease; }
+  &:hover .star { transform: rotate(360deg) scale(1.4); }
+}
+
+.badge {
+  background-color: #f43f5e; color: #fff;
+  font-size: 0.75rem; padding: 4px 10px;
+  border-radius: 20px; border: 2px solid #fff; font-weight: 700;
+}
+
+.menu-toggle { display: none; }
+
+.hamburger {
+  display: flex; flex-direction: column; gap: 5px; cursor: pointer;
+  span { width: 28px; height: 4px; background-color: #fff; border-radius: 4px; border: 1px solid var(--header-border); }
+}
+
+.toon-nav {
+  display: none;
+  position: absolute;
+  top: 100%; left: -20px; right: -20px;
+  background-color: var(--header);
+  padding: 15px;
+  border-bottom: 5px solid var(--header-border);
+  ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+}
+
+.menu-toggle:checked ~ .toon-nav { display: block; }
+
+.nav-btn {
+  display: block; width: 100%;
+  padding: 10px 15px;
+  border-radius: var(--radius-btn);
+  text-decoration: none;
+  font-family: inherit; font-size: 1rem; font-weight: 700;
+  color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  border: 3px solid #fff; text-align: center;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+  &.yellow { background-color: #facc15; border-color: #ca8a04; color: #713f12; }
+  &.pink   { background-color: #f472b6; border-color: #db2777; }
+  &.green  { background-color: #4ade80; border-color: #16a34a; }
+  &.blue   { background-color: #60a5fa; border-color: #2563eb; }
+  &.theme-btn { background-color: #334155; border-color: #0f172a; }
+  &:hover { transform: translateY(-4px) scale(1.05); }
+  &:focus-visible { outline: 4px solid #f43f5e; outline-offset: 3px; }
+}
+
+@include respond(tablet) {
+  .hamburger { display: none; }
+  .toon-nav {
+    display: block; position: static;
+    background: transparent; border: none; padding: 0;
+    ul { flex-direction: row; gap: 10px; }
+  }
+  .nav-btn { width: auto; }
+}
